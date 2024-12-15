@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KleeBot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0078D7',
+            secondary: '#005bb5',
+          },
+        },
+      },
+    };
+
+    // Toggle theme and save it in localStorage
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDarkMode = html.classList.toggle('dark');
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
+
+    // Load theme from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 dark:text-gray-200 min-h-screen flex flex-col items-center">
+  <!-- Header -->
+  <header class="bg-primary dark:bg-gray-800 text-white py-4 px-6 shadow-lg w-full">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <h1 class="text-3xl font-bold">ZynTelebot</h1>
+      <button 
+        onclick="toggleTheme()" 
+        class="w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center px-1 transition duration-300 focus:outline-none shadow">
+        <div class="w-4 h-4 bg-white rounded-full transform transition-transform dark:translate-x-6"></div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md rounded-xl p-8 mt-8 w-full max-w-3xl mx-4">
+    <div class="text-center">
+      <img src="https://telegra.ph/file/7a385897829927b981dfa.jpg" 
+           alt="ZynTelebot Logo" class="w-24 h-24 mx-auto rounded-full shadow mb-4 border border-gray-300 dark:border-gray-600">
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Welcome to ZynTelebot</h2>
+      <p class="text-gray-600 dark:text-gray-400 mt-2">
+        Your assistant bot to make your day easier. Start exploring now by clicking the button below!
+      </p>
+    </div>
+
+    <!-- Action Button -->
+    <div class="mt-6 text-center">
+      <a href="https://t.me/ZynTelebot" 
+         class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-secondary transition shadow-lg">
+        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7-9 7-9-7z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21V10l12-7v11M9 21l-6-4" />
+        </svg>
+        Open KleeBot
+      </a>
+    </div>
+
+    <!-- Telegram Login Widget -->
+    <div class="mt-8 text-center">
+      <p class="text-gray-600 dark:text-gray-400 mb-4">Or login via Telegram directly:</p>
+      <script async src="https://telegram.org/js/telegram-widget.js?22" 
+              data-telegram-login="ZynTelebot" 
+              data-size="large" 
+              data-auth-url="Https://kleebot.vercel.app" 
+              data-request-access="write">
+      </script>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+    © 2024 ZynTelebot. All rights reserved.
+  </footer>
+</body>
+</html>
